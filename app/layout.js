@@ -3,7 +3,7 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-})
+});
 
 export const metadata = {
   title: "Ride Mart",
@@ -13,9 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.className} antialiased`}>
         <div className="min-h-screen">{children}</div>
         <footer className="bg-blue-50 py-12">
           <div className="container mx-auto text-center px-4 text-gray-600">
