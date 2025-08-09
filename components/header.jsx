@@ -3,12 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const Header = () => {
+const Header = async ({ isAdminPage = false }) => {
+  isAdmin = false;
   return (
     <header>
       <nav>
-        <Link href={"/"}>
-          <Image src={"/logo.png"} alt="logo" width={100} height={100} />
+        <Link href={`${isAdminPage ? "/admin" : "/"}`}>
+          <Image
+            src={"/logo.png"}
+            alt="logo"
+            width={200}
+            height={60}
+            className="h-12 w-auto object-contain"
+          />
+          {isAdminPage && (
+            <span className="text-xs font-extralight">admin</span>
+          )}
         </Link>
       </nav>
     </header>
