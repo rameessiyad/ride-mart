@@ -1,0 +1,27 @@
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "entity.other.attribute-name.js.jsx"
+                ],
+                "settings": {
+                    "foreground": "#89CFF0", // Light blue color
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": [
+                    "keyword.control.import.js.jsx",
+                    "meta.import.js.jsx",
+                    "source.js.jsx",
+                    "keyword"
+                ],
+                "settings": {
+                    "foreground": "#0d9aec"
+                }
+    }
+           
+        ]
+    }
+}
