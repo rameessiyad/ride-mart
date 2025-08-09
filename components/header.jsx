@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 const Header = async ({ isAdminPage = false }) => {
-  isAdmin = false;
+  const isAdmin = false;
   return (
     <header>
       <nav>
