@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import React from "react";
+import { useSignIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 const SignInForm = () => {
+    const {signIn, isLoaded, error} = useSignIn();
   return (
     <div className="h-auto bg-white border-2 shadow-md rounded-md w-80 md:w-96">
       <div className="p-6 md:p-8">
