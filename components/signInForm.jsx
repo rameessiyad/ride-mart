@@ -55,6 +55,13 @@ const SignInForm = () => {
           <Button type="submit" disabled={loading} className="w-full my-4">
             {loading ? "Signing In..." : "Sign In"}
           </Button>
+
+          {/* google signin button */}
+          <Button type="submit" variant="outline" disabled={loading}>
+            {loading ? "Redirecting..." : "Sign In with Google"}
+          </Button>
+
+          {error && <p className="text-red-600 mt-4">{error.message}</p>}
         </form>
         <p className="text-sm font-light text-center">
           Don&apos;t have an account ?{" "}
