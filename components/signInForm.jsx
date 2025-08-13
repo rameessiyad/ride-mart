@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
@@ -13,16 +15,18 @@ const SignInForm = () => {
             type="email"
             placeholder="Email Address"
             className="w-full p-2 mt-4 border-2 rounded-md"
+            required
           />
           <Input
             type="password"
             placeholder="Password"
             className="w-full p-2 mt-4 border-2 rounded-md"
+            required
           />
-          <Button className="w-full mt-4">Sign In</Button>
+          <Button variant="" className="w-full my-4">Sign In</Button>
         </form>
         <p className="text-sm font-light text-center">
-          Don&apos;t have an account ? <Link href={"/sign-up"}>Sign Up</Link>
+          Don&apos;t have an account ? <Link href={"/sign-up"} className="text-blue-600 font-semibold">Sign Up</Link>
         </p>
       </div>
     </div>
