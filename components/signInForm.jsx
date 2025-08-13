@@ -48,7 +48,7 @@ const SignInForm = () => {
   return (
     <div className="h-auto bg-white border-2 shadow-md rounded-md w-80 md:w-96">
       <div className="p-6 md:p-8">
-        <h1 className="text-2xl font-semibold text-center my-10">
+        <h1 className="text-xl font-semibold text-center my-10">
           Sign in to Ride Mart
         </h1>
         <form onSubmit={handleSubmit}>
