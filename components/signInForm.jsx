@@ -39,17 +39,21 @@ const SignInForm = () => {
           <Input
             type="email"
             placeholder="Email Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 mt-4 border-2 rounded-md"
             required
           />
           <Input
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="w-full p-2 mt-4 border-2 rounded-md"
             required
           />
-          <Button variant="" className="w-full my-4">
-            Sign In
+          <Button type="submit" disabled={loading} className="w-full my-4">
+            {loading ? "Signing In..." : "Sign In"}
           </Button>
         </form>
         <p className="text-sm font-light text-center">
