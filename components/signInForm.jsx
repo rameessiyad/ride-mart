@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 const SignInForm = () => {
   return (
@@ -8,12 +9,12 @@ const SignInForm = () => {
       <div className="p-6 md:p-8">
         <h1 className="text-2xl font-semibold text-center">Sign in to Ride Mart</h1>
         <form action="">
-          <input
+          <Input
             type="email"
             placeholder="Email Address"
             className="w-full p-2 mt-4 border-2 rounded-md"
           />
-          <input
+          <Input
             type="password"
             placeholder="Password"
             className="w-full p-2 mt-4 border-2 rounded-md"
