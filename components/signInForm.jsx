@@ -29,6 +29,21 @@ const SignInForm = () => {
     }
     setLoading(false);
   };
+
+  const handleGoogleSignIn = async () => {
+    if (!isLoaded) return;
+
+    setLoading(true);
+    try {
+      await signIn.authenticateWithRedirect({
+        strategy: "oauth_google",
+        redirectUrl: "/",
+      });
+    } catch (err) {
+      console.error("Google Sign In Error", err);
+    }
+    setLoading(false);
+  };
   return (
     <div className="h-auto bg-white border-2 shadow-md rounded-md w-80 md:w-96">
       <div className="p-6 md:p-8">
@@ -57,7 +72,13 @@ const SignInForm = () => {
           </Button>
 
           {/* google signin button */}
-          <Button type="submit" variant="outline" disabled={loading}>
+          <Button
+            type="submit"
+            variant="outline"
+            disabled={loading}
+            onClick={handleGoogleSignIn}
+            className="w-full my-4"
+          >
             {loading ? "Redirecting..." : "Sign In with Google"}
           </Button>
 
