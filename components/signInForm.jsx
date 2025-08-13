@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useSignIn } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { FcGoogle } from "react-icons/fc";
 
 const SignInForm = () => {
   const { signIn, isLoaded, error } = useSignIn();
@@ -79,7 +80,8 @@ const SignInForm = () => {
             onClick={handleGoogleSignIn}
             className="w-full my-4"
           >
-            {loading ? "Redirecting..." : "Sign In with Google"}
+            <FcGoogle />
+            <span> {loading ? "Redirecting..." : "Sign In with Google"}</span>
           </Button>
 
           {error && <p className="text-red-600 mt-4">{error.message}</p>}
