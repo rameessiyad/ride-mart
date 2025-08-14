@@ -1,12 +1,12 @@
-import { SignedIn } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import { ArrowLeft, Bike, Heart, Layout } from "lucide-react";
 
-const Header = async ({ isAdminPage = true }) => {
-  const isAdmin = true;
+const Header = async ({ isAdminPage = false }) => {
+  const isAdmin = false;
   return (
     <header className="fixed top-0 w-full bg-white/80 backdrop:blur-md z-50 border-b">
       <nav className="mx-auto p-4 flex items-center justify-between">
@@ -61,6 +61,23 @@ const Header = async ({ isAdminPage = true }) => {
               )}
             </SignedIn>
           )}
+          <SignedOut>
+            <Link href="/sign-in">
+              <Button variant="outline" className="cursor-pointer">
+                Login
+              </Button>
+            </Link>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "w-10 h-10",
+                },
+              }}
+            />
+          </SignedIn>
         </div>
       </nav>
     </header>
