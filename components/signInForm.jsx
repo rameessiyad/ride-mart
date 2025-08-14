@@ -48,14 +48,14 @@ const SignInForm = () => {
   return (
     <div className="h-auto bg-white border-2 shadow-md rounded-md w-80 md:w-96">
       <div className="p-6 md:p-8">
-      <div className="py-10">
+        <div className="py-10">
           <h1 className="text-xl font-semibold text-center">
-          Sign in to Ride Mart
-        </h1>
-        <p className="text-xs text-center text-gray-500 mt-1">
-          Welcome back! Please sign in to continue 
-        </p>
-      </div>
+            Sign in to Ride Mart
+          </h1>
+          <p className="text-xs text-center text-gray-500 mt-1">
+            Welcome back! Please sign in to continue
+          </p>
+        </div>
         <form onSubmit={handleSubmit}>
           <Input
             type="email"
@@ -73,7 +73,11 @@ const SignInForm = () => {
             className="w-full p-2 mt-4 border-2 rounded-md"
             required
           />
-          <Button type="submit" disabled={loading} className="w-full mt-4">
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full mt-4 cursor-pointer"
+          >
             {loading ? "Signing In..." : "Continue"}
           </Button>
 
@@ -83,7 +87,7 @@ const SignInForm = () => {
             variant="outline"
             disabled={loading}
             onClick={handleGoogleSignIn}
-            className="w-full my-4"
+            className="w-full my-4 cursor-pointer"
           >
             <FcGoogle />
             <span> {loading ? "Redirecting..." : "Sign In with Google"}</span>
