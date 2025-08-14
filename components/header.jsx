@@ -10,7 +10,7 @@ const Header = async ({ isAdminPage = true }) => {
   return (
     <header className="fixed top-0 w-full bg-white/80 backdrop:blur-md z-50 border-b">
       <nav className="mx-auto p-4 flex items-center justify-between">
-        <Link href={`${isAdminPage ? "/admin" : "/"}`}>
+        <Link href={`${isAdminPage ? "/admin" : "/"}`} className="flex">
           <Image
             src={"/logo.png"}
             alt="logo"
