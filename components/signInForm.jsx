@@ -48,9 +48,14 @@ const SignInForm = () => {
   return (
     <div className="h-auto bg-white border-2 shadow-md rounded-md w-80 md:w-96">
       <div className="p-6 md:p-8">
-        <h1 className="text-xl font-semibold text-center my-10">
+      <div className="py-10">
+          <h1 className="text-xl font-semibold text-center">
           Sign in to Ride Mart
         </h1>
+        <p className="text-xs text-center text-gray-500 mt-1">
+          Welcome back! Please sign in to continue 
+        </p>
+      </div>
         <form onSubmit={handleSubmit}>
           <Input
             type="email"
@@ -69,7 +74,7 @@ const SignInForm = () => {
             required
           />
           <Button type="submit" disabled={loading} className="w-full mt-4">
-            {loading ? "Signing In..." : "Sign In"}
+            {loading ? "Signing In..." : "Continue"}
           </Button>
 
           {/* google signin button */}
