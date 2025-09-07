@@ -1,7 +1,7 @@
 import React from "react";
 
-const homeSearch = () => {
-  return <div>homeSearch</div>;
+const HomeSearch = () => {
+  return <div>HomeSearch</div>;
 };
 
-export default homeSearch;
+export default HomeSearch;
