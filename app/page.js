@@ -1,4 +1,5 @@
 import Image from "next/image";
+import homeSearch from "@/components/homeSearch";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           </div>
 
           {/* Search */}
+          <homeSearch />
         </div>
       </section>
     </div>
