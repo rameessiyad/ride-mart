@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="pt-20 flex flex-col">
-      {/* hero */}
+      {/* Hero */}
       <section>
         <div>
           <div>
@@ -12,6 +12,8 @@ export default function Home() {
               Advanced AI Bike Search and test drive from thousands of bikes
             </p>
           </div>
+
+          {/* Search */}
         </div>
       </section>
     </div>
