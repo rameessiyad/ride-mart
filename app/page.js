@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HomeSearch from "@/components/homeSearch";
+import { ChevronRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -18,6 +19,17 @@ export default function Home() {
 
           {/* Search */}
           <HomeSearch />
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div>
+          <div>
+            <h2>Featured Bikes</h2>
+            <button>
+              View All <ChevronRight />
+            </button>
+          </div>
         </div>
       </section>
     </div>
