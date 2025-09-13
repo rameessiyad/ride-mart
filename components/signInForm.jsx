@@ -83,7 +83,7 @@ const SignInForm = () => {
 
           {/* google signin button */}
           <Button
-            type="submit"
+            type="button"
             variant="outline"
             disabled={loading}
             onClick={handleGoogleSignIn}
