@@ -8,8 +8,8 @@ import { ArrowLeft, Bike, Heart, Layout } from "lucide-react";
 const Header = async ({ isAdminPage = false }) => {
   const isAdmin = false;
   return (
-    <header className="fixed top-0 w-full bg-white/80 backdrop:blur-md z-50 border-b">
-      <nav className="mx-auto p-4 flex items-center justify-between">
+    <header className="fixed top-0 w-full bg-white/70 backdrop-blur-md z-50 border-b">
+      <nav className="mx-auto p-3 flex items-center justify-between">
         <Link href={`${isAdminPage ? "/admin" : "/"}`} className="flex">
           <Image
             src={"/logo.png"}
