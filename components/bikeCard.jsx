@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Card, CardHeader } from "./ui/card";
+import { Card, CardContent, CardHeader } from "./ui/card";
 import Image from "next/image";
 import { Bike, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 
 const BikeCard = ({ bike }) => {
   const [isSaved, setIsSaved] = useState(bike.wishlisted);
+
+  const handleToggleSaved = async (e) => {};
   return (
     <Card className="overflow-hidden hover:shadow-lg transition group">
       <div className="relative h-48">
@@ -33,10 +35,20 @@ const BikeCard = ({ bike }) => {
               ? "text-red-500 hover:text-red-600"
               : "text-gray-600 hover:text-gray-900"
           }`}
+          onClick={handleToggleSaved}
         >
           <Heart className={isSaved ? "fill-current" : ""} size={20} />
         </Button>
       </div>
+
+      <CardContent className="p-4">
+        <div className="flex flex-col mb-2">
+          <h3 className="text-lg font-bold line-clamp-1">
+            {bike.make} {bike.model}
+          </h3>
+          <span className="text-xl text-blue-600">{bike.price.toLocaleString()}</span>
+        </div>
+      </CardContent>
     </Card>
   );
 };
