@@ -4,6 +4,7 @@ import { ChevronRight, Heart } from "lucide-react";
 import { featuredBikes } from "@/lib/data";
 import BikeCard from "@/components/bikeCard";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -26,11 +27,13 @@ export default function Home() {
       </section>
 
       <section className="py-12">
-        <div>
-          <div>
-            <h2>Featured Bikes</h2>
-            <Button>
-              View All <ChevronRight className="ml-1 h-4 w-4" />
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold">Featured Bikes</h2>
+            <Button  variant="ghost" className="flex items-center" asChild>
+              <Link href="/bikes">
+                View All <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
           </div>
 
@@ -38,7 +41,6 @@ export default function Home() {
             {featuredBikes.map((bike) => {
               return <BikeCard id={bike.id} bike={bike} key={bike.id} />;
             })}
-
           </div>
         </div>
       </section>

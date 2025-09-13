@@ -5,13 +5,16 @@ import { Card, CardContent, CardHeader } from "./ui/card";
 import Image from "next/image";
 import { Bike, Heart } from "lucide-react";
 import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
+import { useRouter } from "next/navigation";
 
 const BikeCard = ({ bike }) => {
   const [isSaved, setIsSaved] = useState(bike.wishlisted);
+  const router = useRouter();
 
   const handleToggleSaved = async (e) => {};
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition group">
+    <Card className="overflow-hidden hover:shadow-lg transition group py-0">
       <div className="relative h-48">
         {bike.images && bike.images.length > 0 ? (
           <div>
@@ -46,7 +49,31 @@ const BikeCard = ({ bike }) => {
           <h3 className="text-lg font-bold line-clamp-1">
             {bike.make} {bike.model}
           </h3>
-          <span className="text-xl text-blue-600">{bike.price.toLocaleString()}</span>
+          <span className="text-xl text-blue-600 font-semibold">
+            {bike.price.toLocaleString()}
+          </span>
+        </div>
+
+        <div className="text-gray-600 mb-2 flex items-center">
+          <span>{bike.year}</span>
+        </div>
+
+        <div className="flex flex-wrap gap-1 mb-4">
+          <Badge variant="outline" className="bg-gray-50">
+            {bike.mileage.toLocaleString()} kms
+          </Badge>
+          <Badge variant="outline" className="bg-gray-50">
+            {bike.color}
+          </Badge>
+        </div>
+
+        <div className="flex justify-between">
+          <Button
+            className="flex-1"
+            onClick={() => router.push(`/bikes/${bike.id}`)}
+          >
+            View Bike
+          </Button>
         </div>
       </CardContent>
     </Card>
