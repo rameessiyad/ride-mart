@@ -1,7 +1,7 @@
-
 import React from "react";
 import { Card, CardHeader } from "./ui/card";
 import Image from "next/image";
+import { Bike } from "lucide-react";
 
 const BikeCard = ({ bike }) => {
   return (
@@ -17,7 +17,9 @@ const BikeCard = ({ bike }) => {
             />
           </div>
         ) : (
-          <div>poda</div>
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+            <Bike className="h-12 w-12 text-gray-400" />
+          </div>
         )}
       </div>
     </Card>
