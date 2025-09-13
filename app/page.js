@@ -27,7 +27,7 @@ export default function Home() {
           <div>
             <h2>Featured Bikes</h2>
             <button>
-              View All <ChevronRight />
+              View All <ChevronRight className="ml-1 h-4 w-4" />
             </button>
           </div>
         </div>
