@@ -1,8 +1,9 @@
 import Image from "next/image";
 import HomeSearch from "@/components/homeSearch";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Heart } from "lucide-react";
 import { featuredBikes } from "@/lib/data";
 import BikeCard from "@/components/bikeCard";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -28,15 +29,16 @@ export default function Home() {
         <div>
           <div>
             <h2>Featured Bikes</h2>
-            <button>
+            <Button>
               View All <ChevronRight className="ml-1 h-4 w-4" />
-            </button>
+            </Button>
           </div>
 
-          <div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredBikes.map((bike) => {
-              return <BikeCard id={bike.id} bike={bike} key={bike.id} />
+              return <BikeCard id={bike.id} bike={bike} key={bike.id} />;
             })}
+
           </div>
         </div>
       </section>
