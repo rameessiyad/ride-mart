@@ -2,7 +2,7 @@
 
 import React, { useCallback, useState } from "react";
 import { Input } from "./ui/input";
-import { Camera } from "lucide-react";
+import { Camera, Upload } from "lucide-react";
 import { Button } from "./ui/button";
 import { useDropzone } from "react-dropzone";
 
@@ -64,16 +64,22 @@ const HomeSearch = () => {
               {imagePreview ? (
                 <div></div>
               ) : (
-                <div {...getRootProps()}>
+                <div {...getRootProps()} className="cursor-pointer">
                   <input {...getInputProps()} />
-                  <p>
-                    {isDragActive && !isDragReject
-                      ? "Leave the file here to upload"
-                      : "Drag & drop a bike image or click to select"}
-                  </p>
-                  {isDragReject && (
-                    <p className="text-red-500 mb-2">Invalid file type</p>
-                  )}
+                  <div className="flex flex-col items-center">
+                    <Upload className="h-12 w-12 text-gray-400 mb-2" />
+                    <p>
+                      {isDragActive && !isDragReject
+                        ? "Leave the file here to upload"
+                        : "Drag & drop a bike image or click to select"}
+                    </p>
+                    {isDragReject && (
+                      <p className="text-red-500 mb-2">Invalid file type</p>
+                    )}
+                    <p className="text-gray-400 text-sm">
+                      Supports: JPG, PNG (max 5MB)
+                    </p>
+                  </div>
                 </div>
               )}
             </div>
