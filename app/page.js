@@ -81,7 +81,7 @@ export default function Home() {
       </section>
 
       {/* why choose us  */}
-      <section className="py-16">
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-12">
             Why Choose Our Platform
@@ -120,6 +120,12 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
         </div>
       </section>
     </div>
