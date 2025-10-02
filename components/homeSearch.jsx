@@ -15,7 +15,13 @@ const HomeSearch = () => {
   const [isUploading, setisUploading] = useState(false);
 
   const handleTextSubmit = (e) => {};
-  const handleImageSearch = (e) => {};
+  const handleImageSearch = async (e) => {
+    e.preventDefault();
+    if (!searchImage) {
+      toast.error("Please upload an image first");
+      return;
+    }
+  };
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -123,6 +129,11 @@ const HomeSearch = () => {
                 </div>
               )}
             </div>
+            {imagePreview && (
+              <Button type="submit" className="w-full" dissabled={isUploading}>
+                {isUploading ? "Uploading" : "Search with this Image"}
+              </Button>
+            )}
           </form>
         </div>
       )}
