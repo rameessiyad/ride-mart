@@ -6,6 +6,7 @@ import { Camera, Upload } from "lucide-react";
 import { Button } from "./ui/button";
 import { useDropzone } from "react-dropzone";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const HomeSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,7 +15,17 @@ const HomeSearch = () => {
   const [searchImage, setSearchImage] = useState(null);
   const [isUploading, setisUploading] = useState(false);
 
-  const handleTextSubmit = (e) => {};
+  const router = useRouter();
+
+  const handleTextSubmit = (e) => {
+    e.preventDefault();
+    if (!searchTerm.trim()) {
+      toast.error("Please enter a search term");
+      return;
+    }
+
+    router.push(`/bikes?search=${encodeURIComponent(searchTerm)}`);
+  };
   const handleImageSearch = async (e) => {
     e.preventDefault();
     if (!searchImage) {
