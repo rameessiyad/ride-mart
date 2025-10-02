@@ -1,15 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Input } from "./ui/input";
 import { Camera } from "lucide-react";
 import { Button } from "./ui/button";
+import { useDropzone } from "react-dropzone";
 
 const HomeSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isImageSearchActive, setIsImageSearchActive] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
+  const [searchImage, setSearchImage] = useState(null);
+  const [isUploading, setisUploading] = useState(false);
 
   const handleTextSubmit = (e) => {};
+  const handleImageSubmit = (e) => {};
+
+  const onDrop = (acceptedFiles) => {
+    // Do something with the files
+  };
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/*": [".jpeg", ".jpg", ".png"],
+    },
+    maxFiles: 1,
+  });
   return (
     <div>
       <form onSubmit={handleTextSubmit}>
@@ -38,6 +55,29 @@ const HomeSearch = () => {
           </div>
         </div>
       </form>
+
+      {isImageSearchActive && (
+        <div className="mt-4">
+          <form onSubmit={handleImageSubmit}>
+            <div>
+              {imagePreview ? (
+                <div></div>
+              ) : (
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  {isDragActive ? (
+                    <p>Drop the files here ...</p>
+                  ) : (
+                    <p>
+                      Drag 'n' drop some files here, or click to select files
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 };
