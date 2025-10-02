@@ -1,7 +1,7 @@
 import Image from "next/image";
 import HomeSearch from "@/components/homeSearch";
-import { ChevronRight, Heart } from "lucide-react";
-import { featuredBikes } from "@/lib/data";
+import { Bike, ChevronRight, Heart } from "lucide-react";
+import { bikeMakes, featuredBikes } from "@/lib/data";
 import BikeCard from "@/components/bikeCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold">Featured Bikes</h2>
-            <Button  variant="ghost" className="flex items-center" asChild>
+            <Button variant="ghost" className="flex items-center" asChild>
               <Link href="/bikes">
                 View All <ChevronRight className="ml-1 h-4 w-4" />
               </Link>
@@ -49,17 +49,55 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold">Browse by Make</h2>
-            <Button  variant="ghost" className="flex items-center" asChild>
+            <Button variant="ghost" className="flex items-center" asChild>
               <Link href="/bikes">
                 View All <ChevronRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredBikes.map((bike) => {
-              return <BikeCard id={bike.id} bike={bike} key={bike.id} />;
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {bikeMakes.map((make) => {
+              return (
+                <Link
+                  key={make.name}
+                  href={`/bikes?make=${make.name}`}
+                  className="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer"
+                >
+                  <div className="h-16 w-auto mb-2 relative">
+                    <Image
+                      src={make.image}
+                      alt="make.name"
+                      style={{ objectFit: "contain" }}
+                      fill
+                    ></Image>
+                  </div>
+                  <h3 className="font-medium">{make.name}</h3>
+                </Link>
+              );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* why choose us  */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl font-bold text-center mb-12">
+            Why Choose Our Platform
+          </h2>
+
+          <div>
+            <div>
+              <div>
+                <Bike className="w-8 h-8" />
+              </div>
+              <h3>Wide Selection</h3>
+              <p>
+                Thousands of verified vehicles from trusted dealerships and
+                private sellers.
+              </p>
+            </div>
           </div>
         </div>
       </section>
