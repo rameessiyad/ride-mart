@@ -71,6 +71,9 @@ const HomeSearch = () => {
                       ? "Leave the file here to upload"
                       : "Drag & drop a bike image or click to select"}
                   </p>
+                  {isDragReject && (
+                    <p className="text-red-500 mb-2">Invalid file type</p>
+                  )}
                 </div>
               )}
             </div>
