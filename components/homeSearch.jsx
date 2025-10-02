@@ -21,6 +21,8 @@ const HomeSearch = () => {
       toast.error("Please upload an image first");
       return;
     }
+
+    // add ai logic
   };
 
   const onDrop = (acceptedFiles) => {
