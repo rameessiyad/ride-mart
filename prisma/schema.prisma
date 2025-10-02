@@ -16,18 +16,82 @@ datasource db {
 }
 
 model User {
-  id          String   @id @default(uuid())
-  clerkUserId String   @unique
+  id          String             @id @default(uuid())
+  clerkUserId String             @unique
   email       String
   name        String?
   imageUrl    String?
   phone       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  role        UserRole @default(USER)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  role        UserRole           @default(USER)
+  savedBikes  UserSavedBike[]
+  testDrives  TestDriveBooking[]
 }
 
 enum UserRole {
   USER
   ADMIN
+}
+
+model Bike {
+  id                String             @id @default(uuid())
+  make              String
+  model             String
+  year              Int
+  price             Decimal            @db.Decimal(10, 2)
+  mileage           Int
+  color             String
+  description       String
+  status            BikeStatus         @default(AVAILABLE)
+  featured          Boolean            @default(false)
+  images            String[]
+  savedBy           UserSavedBike[]
+  testDriveBookings TestDriveBooking[]
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+
+  @@index([make, model])
+  @@index([price])
+  @@index([year])
+  @@index([featured])
+}
+
+enum BikeStatus {
+  AVAILABLE
+  UNAVAILABLE
+  SOLD
+}
+
+model DealerShipInfo {
+  id           String        @id @default(uuid())
+  name         String        @default("Ride Mart")
+  address      String        @default("Kottayam, Kerala")
+  phone        String        @default("7025014236")
+  email        String        @default("ridemart@gmail.com")
+  workingHours WorkingHour[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model WorkingHour {
+  id               String          @id @default(uuid())
+  DealerShipInfo   DealerShipInfo? @relation(fields: [dealerShipInfoId], references: [id])
+  dealerShipInfoId String?
+}
+
+model UserSavedBike {
+  id     String  @id @default(uuid())
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
+  Bike   Bike?   @relation(fields: [bikeId], references: [id])
+  bikeId String?
+}
+
+model TestDriveBooking {
+  id     String  @id @default(uuid())
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
+  Bike   Bike?   @relation(fields: [bikeId], references: [id])
+  bikeId String?
 }
