@@ -66,9 +66,11 @@ const HomeSearch = () => {
               ) : (
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  {isDragActive && !isDragReject
-                    ? "Leave the file here to upload"
-                    : "Drag & drop a bike image or click to select"}
+                  <p>
+                    {isDragActive && !isDragReject
+                      ? "Leave the file here to upload"
+                      : "Drag & drop a bike image or click to select"}
+                  </p>
                 </div>
               )}
             </div>
