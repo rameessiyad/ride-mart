@@ -20,13 +20,14 @@ const HomeSearch = () => {
     // Do something with the files
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: {
-      "image/*": [".jpeg", ".jpg", ".png"],
-    },
-    maxFiles: 1,
-  });
+  const { getRootProps, getInputProps, isDragActive, isDragReject } =
+    useDropzone({
+      onDrop,
+      accept: {
+        "image/*": [".jpeg", ".jpg", ".png"],
+      },
+      maxFiles: 1,
+    });
   return (
     <div>
       <form onSubmit={handleTextSubmit}>
@@ -65,13 +66,9 @@ const HomeSearch = () => {
               ) : (
                 <div {...getRootProps()}>
                   <input {...getInputProps()} />
-                  {isDragActive ? (
-                    <p>Drop the files here ...</p>
-                  ) : (
-                    <p>
-                      Drag 'n' drop some files here, or click to select files
-                    </p>
-                  )}
+                  {isDragActive && !isDragReject
+                    ? "Leave the file here to upload"
+                    : "Drag & drop a bike image or click to select"}
                 </div>
               )}
             </div>
