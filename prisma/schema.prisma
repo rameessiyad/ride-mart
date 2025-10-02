@@ -75,23 +75,69 @@ model DealerShipInfo {
 }
 
 model WorkingHour {
-  id               String          @id @default(uuid())
-  DealerShipInfo   DealerShipInfo? @relation(fields: [dealerShipInfoId], references: [id])
-  dealerShipInfoId String?
+  id           String         @id @default(uuid())
+  dealerShipId String
+  dealerShip   DealerShipInfo @relation(fields: [dealerShipId], references: [id], onDelete: Cascade)
+  dayOfWeek    DayOfWeek
+  openTime     String
+  closeTime    String
+  isOpen       Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@unique([dealerShipId, dayOfWeek])
+  @@index([dealerShipId])
+  @@index([dayOfWeek])
+  @@index([isOpen])
+}
+
+enum DayOfWeek {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
 }
 
 model UserSavedBike {
-  id     String  @id @default(uuid())
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
-  Bike   Bike?   @relation(fields: [bikeId], references: [id])
-  bikeId String?
+  id      String   @id @default(uuid())
+  userId  String?
+  User    User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bikeId  String?
+  Bike    Bike?    @relation(fields: [bikeId], references: [id], onDelete: Cascade)
+  savedAt DateTime @default(now())
+
+  @@unique([userId, bikeId])
+  @@index([userId])
+  @@index([bikeId])
 }
 
 model TestDriveBooking {
-  id     String  @id @default(uuid())
-  User   User?   @relation(fields: [userId], references: [id])
-  userId String?
-  Bike   Bike?   @relation(fields: [bikeId], references: [id])
-  bikeId String?
+  id          String        @id @default(uuid())
+  userId      String?
+  User        User?         @relation(fields: [userId], references: [id])
+  bikeId      String?
+  Bike        Bike?         @relation(fields: [bikeId], references: [id])
+  bookingDate DateTime      @db.Date
+  startTime   String
+  endTime     String
+  status      BookingStatus @default(PENDING)
+  notes       String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([bikeId])
+  @@index([userId])
+  @@index([bookingDate])
+  @@index([status])
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
 }
