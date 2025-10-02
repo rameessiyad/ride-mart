@@ -143,7 +143,7 @@ const HomeSearch = () => {
               )}
             </div>
             {imagePreview && (
-              <Button type="submit" className="w-full" dissabled={isUploading}>
+              <Button type="submit" className="w-full mt-2" dissabled={isUploading}>
                 {isUploading ? "Uploading" : "Search with this Image"}
               </Button>
             )}
