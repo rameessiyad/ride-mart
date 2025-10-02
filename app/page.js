@@ -1,6 +1,6 @@
 import Image from "next/image";
 import HomeSearch from "@/components/homeSearch";
-import { Bike, ChevronRight, Heart } from "lucide-react";
+import { Bike, Calendar, ChevronRight, Heart, Shield } from "lucide-react";
 import { bikeMakes, featuredBikes } from "@/lib/data";
 import BikeCard from "@/components/bikeCard";
 import { Button } from "@/components/ui/button";
@@ -87,15 +87,36 @@ export default function Home() {
             Why Choose Our Platform
           </h2>
 
-          <div>
-            <div>
-              <div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-blue-100 text-blue-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Bike className="w-8 h-8" />
               </div>
-              <h3>Wide Selection</h3>
-              <p>
+              <h3 className="text-xl font-bold mb-2">Wide Selection</h3>
+              <p className="text-gray-600">
                 Thousands of verified vehicles from trusted dealerships and
                 private sellers.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-blue-100 text-blue-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Calendar className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Easy Test Drive</h3>
+              <p className="text-gray-600">
+                Book a test drive online in minutes, with flexible sheduling
+                options.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-blue-100 text-blue-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Secure Process</h3>
+              <p className="text-gray-600">
+                Verified listings and secure booking process for peace of mind.
               </p>
             </div>
           </div>
