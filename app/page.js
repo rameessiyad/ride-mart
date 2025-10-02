@@ -44,6 +44,25 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold">Browse by Make</h2>
+            <Button  variant="ghost" className="flex items-center" asChild>
+              <Link href="/bikes">
+                View All <ChevronRight className="ml-1 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredBikes.map((bike) => {
+              return <BikeCard id={bike.id} bike={bike} key={bike.id} />;
+            })}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
