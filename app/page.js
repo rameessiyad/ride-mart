@@ -1,10 +1,16 @@
 import Image from "next/image";
 import HomeSearch from "@/components/homeSearch";
 import { Bike, Calendar, ChevronRight, Heart, Shield } from "lucide-react";
-import { bikeMakes, featuredBikes } from "@/lib/data";
+import { bikeMakes, faqItems, featuredBikes } from "@/lib/data";
 import BikeCard from "@/components/bikeCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { AccordionItem } from "@radix-ui/react-accordion";
 
 export default function Home() {
   return (
@@ -125,7 +131,20 @@ export default function Home() {
 
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+          <h2 className="text-2xl font-bold text-center mb-8">
+            Frequently Asked Questions
+          </h2>
+
+          <Accordion type="single" collapsible className="w-full">
+            {faqItems.map((item, index) => {
+              return (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger>{item.question}</AccordionTrigger>
+                  <AccordionContent>{item.answer}</AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
         </div>
       </section>
     </div>
