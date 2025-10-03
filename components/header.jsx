@@ -55,7 +55,7 @@ const Header = async ({ isAdminPage = false }) => {
                   </Button>
                 </Link>
               ) : (
-                <Link href="/admin">
+                <Link href="/admin" className="cursor-pointer">
                   <Button variant="outline">
                     <Layout size={18} />
                     <span className="hidden md:inline">Admin Portal</span>
